@@ -1,6 +1,6 @@
-# Scenic Home for Samsung
+# Vibe-Coded Custom Launcher for Samsung TV
 
-**A vibe-coded launcher for Samsung Tizen TVs, built to replace Samsung's cluttered home screen with a calm, scenic HDMI hub.**
+**A vibe-coded custom launcher for Samsung Tizen TVs, built to replace Samsung's cluttered home screen with a calm, scenic HDMI hub.**
 
 Open Apple TV, PlayStation or another connected device from a small row of glass cards, with landscape photography behind it and useful information up top. The goal is to keep the TV focused on your devices while retaining access to Samsung's picture, sound and system settings.
 
@@ -29,14 +29,14 @@ No framework, account or backend is needed for the preview. Photos and icons are
 Use Python 3.9 or newer:
 
 ```sh
-git clone https://github.com/dvnkshl/samsung-scenic-home.git
-cd samsung-scenic-home
+git clone https://github.com/dvnkshl/vibe-coded-custom-launcher-for-samsung-tv.git
+cd vibe-coded-custom-launcher-for-samsung-tv
 python3 tools/preview.py
 ```
 
 Open the localhost URL printed by the server. On Windows use `py -3 tools/preview.py`. Use the arrow keys, Enter and Escape, or a mouse. Stop the server with Ctrl+C.
 
-You can also download the [friend-kit ZIP from Releases](https://github.com/dvnkshl/samsung-scenic-home/releases/latest), unzip it and run the same preview command from its folder. The initial kit uses design source **0.7.2**; the public handoff release is **1.0.0**.
+You can also download the [friend-kit ZIP from Releases](https://github.com/dvnkshl/vibe-coded-custom-launcher-for-samsung-tv/releases/latest), unzip it and run the same preview command from its folder. The initial kit uses design source **0.7.2**; the public handoff release is **1.0.0**.
 
 ## Put it on a Samsung TV
 
