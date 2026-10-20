@@ -1,0 +1,5 @@
+I built a custom home screen for my Samsung TV with Codex, plain HTML/CSS/JavaScript and Samsung's Tizen developer tools. It has scenic photo backgrounds, glass Apple TV/PlayStation cards, weather and the year countdown.
+
+This ZIP has the exact design, photos, editable source and a preview you can run on your computer. It also includes AGENT_PROMPT.md: give that to your agent with the folder and it can help adapt the controls for your Samsung model. You will need your own Samsung developer signing profile for your TV.
+
+The included demo won't change your TV's Home button, remove apps or turn it off. Those parts need a model-specific setup and recovery plan. The README explains how to start.

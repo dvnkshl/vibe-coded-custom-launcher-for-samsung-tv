@@ -1,0 +1,200 @@
+(function () {
+  'use strict';
+
+  // Preview is a separate adapter. It can never issue TV or network calls,
+  // even when opened inside a Tizen runtime.
+  var preview = /(?:^|[?&])preview=1(?:&|$)/.test(window.location.search);
+  var api = window.tizen;
+  var DEFAULT_OPERATION = 'http://tizen.org/appcontrol/operation/default';
+  var powerClient;
+
+  function failure(message, cause) {
+    var error = new Error(message);
+    error.userMessage = message;
+    if (cause && cause.name) { error.tvErrorName = cause.name; }
+    return error;
+  }
+
+  function requireTV() {
+    if (!api || !api.application || !api.systeminfo) {
+      throw failure('Open this app on the TV to use its controls. Add ?preview=1 to try the design on this computer.');
+    }
+  }
+
+  function power() {
+    requireTV();
+    if (!window.homePower) {
+      throw failure('Automatic power off is unavailable on this TV.');
+    }
+    if (!powerClient) {
+      powerClient = window.homePower.create({ request: launchPowerControl });
+    }
+    return powerClient;
+  }
+
+  function launchPowerControl(action, session) {
+    return new Promise(function (resolve, reject) {
+      function failed() { reject(failure('TV power control is unavailable. Allow Home auto shutoff on the TV, then try again in Preferences.')); }
+      try {
+        requireTV();
+        var data = [new api.ApplicationControlData('action', [action])];
+        if (session) { data.push(new api.ApplicationControlData('session', [session])); }
+        var control = new api.ApplicationControl(DEFAULT_OPERATION, null, null, null, data);
+        api.application.launchAppControl(control, 'org.codex.q80b.idlepower', function () {}, failed, {
+          onsuccess: function (reply) {
+            var values = {};
+            var invalid = false;
+            Array.prototype.forEach.call(reply || [], function (item) {
+              if (!item || ['action', 'status', 'session'].indexOf(item.key) === -1 || values[item.key] !== undefined || !item.value || item.value.length !== 1) { invalid = true; return; }
+              values[item.key] = item.value[0];
+            });
+            if (invalid || values.action !== action || typeof values.status !== 'string') { failed(); return; }
+            resolve(values);
+          }, onfailure: failed
+        });
+      } catch (error) { failed(); }
+    });
+  }
+
+  function getSources() {
+    if (preview) {
+      return Promise.resolve([1, 2, 3, 4].map(function (number) {
+        return { type: 'HDMI', number: number, connected: null };
+      }));
+    }
+    return new Promise(function (resolve, reject) {
+      try {
+        requireTV();
+        api.systeminfo.getPropertyValue('VIDEOSOURCE', function (value) {
+          var byPort = {};
+          function add(items, connected) {
+            Array.prototype.forEach.call(items || [], function (source) {
+              if (source.type !== 'HDMI' || source.number < 1 || source.number > 4 || source.number % 1) { return; }
+              var key = String(source.number);
+              // A contradictory enumeration is unknown; never manufacture a
+              // connected state from the nullable signal field.
+              if (byPort[key] && byPort[key].connected !== connected) {
+                byPort[key].connected = null;
+              } else {
+                byPort[key] = { type: 'HDMI', number: source.number, connected: connected };
+              }
+            });
+          }
+          add(value.connected, true);
+          add(value.disconnected, false);
+          resolve([1, 2, 3, 4].map(function (number) {
+            return byPort[String(number)] || { type: 'HDMI', number: number, connected: null };
+          }));
+        }, function (error) {
+          reject(failure('The TV could not read its HDMI connections. Try Check inputs again.', error));
+        });
+      } catch (error) {
+        reject(error.userMessage ? error : failure('HDMI connection information is unavailable on this TV.', error));
+      }
+    });
+  }
+
+  function launchControl(appId, extras, errorMessage) {
+    if (preview) { return Promise.resolve({ preview: true }); }
+    return new Promise(function (resolve, reject) {
+      try {
+        requireTV();
+        var data = Object.keys(extras || {}).map(function (key) {
+          return new api.ApplicationControlData(key, [String(extras[key])]);
+        });
+        var control = new api.ApplicationControl(DEFAULT_OPERATION, null, null, null, data);
+        api.application.launchAppControl(control, appId, function () {
+          // Accepted by app manager is distinct from a verified HDMI handoff.
+          resolve({ accepted: true, verified: false, appId: appId });
+        }, function (error) {
+          reject(failure(errorMessage, error));
+        });
+      } catch (error) {
+        reject(error.userMessage ? error : failure(errorMessage, error));
+      }
+    });
+  }
+
+  function selectSource(source) {
+    if (!source || source.type !== 'HDMI' || typeof source.number !== 'number' ||
+        source.number < 1 || source.number > 4 || source.number % 1) {
+      return Promise.reject(failure('Choose a valid HDMI port in Edit layout.'));
+    }
+    if (source.number === 1 || source.number === 3) {
+      return launchCecControl(source.number);
+    }
+    // Candidate native handoff derived from this Q80B's CompSource.dll:
+    // SourceChangeViaTVViewer.ChangeSource supplies change_source/sourceType
+    // then launches org.tizen.tv-viewer. Source types 13 and 15 were observed
+    // on this TV; the 13..16 mapping is also in the pinned native controller.
+    // Signed-web-app acceptance still needs a physical TV trial. Do not replace
+    // this with a TVWindow preview and call that a successful native handoff.
+    var nativeType = 12 + source.number;
+    return launchControl('org.tizen.tv-viewer', {
+      change_source: nativeType,
+      sourceType: nativeType,
+      sourceName: source.label || ('HDMI ' + source.number),
+      // Q80B source inventory identifies HDMI 3 / Apple TV as activity 0.
+      // -2 means no device-control activity and omitted its wake path.
+      mbrIndex: source.number === 3 ? 0 : -2
+    }, 'The TV did not accept this HDMI shortcut. Use Samsung’s input controls.');
+  }
+
+  function launchCecControl(port) {
+    if (preview) { return Promise.resolve({ preview: true }); }
+    return new Promise(function (resolve, reject) {
+      function failed(error) {
+        reject(failure('Device control could not complete. Use Samsung’s input controls or the device remote.', error));
+      }
+      try {
+        requireTV();
+        var data = [new api.ApplicationControlData('action', [port === 3 ? 'apple-tv-hdmi3' : 'ps5-hdmi1'])];
+        var control = new api.ApplicationControl(DEFAULT_OPERATION, null, null, null, data);
+        api.application.launchAppControl(control, 'org.codex.q80b.cec', function () {
+          // Launch acceptance alone does not establish that CEC ran.
+        }, failed, {
+          onsuccess: function (reply) {
+            var values = {};
+            var invalid = false;
+            Array.prototype.forEach.call(reply || [], function (item) {
+              if (!item || (item.key !== 'port' && item.key !== 'status') ||
+                  values[item.key] !== undefined || !item.value || item.value.length !== 1) {
+                invalid = true; return;
+              }
+              values[item.key] = item.value[0];
+            });
+            if (invalid || values.port !== String(port)) { failed(); return; }
+            if (values.status !== 'cec-accepted') {
+              reject(failure('The input opened, but its wake request was unavailable. Use the device remote.'));
+              return;
+            }
+            resolve({ accepted: true, verified: false, wakeRequested: true, appId: 'org.codex.q80b.cec' });
+          },
+          onfailure: failed
+        });
+      } catch (error) { failed(error); }
+    });
+  }
+
+  window.tvBridge = {
+    mode: preview ? 'preview' : 'tizen',
+    getSources: getSources,
+    selectSource: selectSource,
+    prepareStandby: function () {
+      if (preview) { return Promise.resolve({ preview: true, ready: true }); }
+      try { return power().prepare(); } catch (error) { return Promise.reject(error); }
+    },
+    powerOff: function (guard) {
+      if (preview) { return Promise.resolve({ preview: true, requestSent: false, standbyVerified: false }); }
+      try { return power().powerOff(guard); } catch (error) { return Promise.reject(error); }
+    },
+    openSettings: function () {
+      return launchControl('org.tizen.menu', { Entry: 's/setting' },
+        'Settings could not be opened here. Use the Settings button on the Samsung remote.');
+    },
+    openSamsungHome: function () {
+      return launchControl('com.samsung.tv.csfs', { entry_point: 'smarthub_key' },
+        'Samsung Home could not be opened here. Use the Home button on the Samsung remote.');
+    }
+  };
+}());

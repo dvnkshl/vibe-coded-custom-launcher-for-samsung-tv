@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10191c">
+  <title>Home</title>
+  <link rel="stylesheet" href="styles.css?v=0.7.2">
+</head>
+<body>
+  <div id="tv-canvas" class="tv-canvas">
+  <div class="photograph" aria-hidden="true">
+    <img id="photo-a" class="photo is-current" src="assets/yosemite.jpg" alt="">
+    <img id="photo-b" class="photo" alt="">
+  </div>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main id="home" aria-label="TV home">
+    <header class="topbar">
+      <section id="year-progress" class="year-progress" aria-label="Year progress">
+        <div class="year-meta"><span id="year-label"></span><span id="year-summary"></span></div>
+        <div id="year-track" class="year-track" role="progressbar" aria-label="Progress through the year" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="year-fill"></span><span class="quarter-tick" data-quarter-end="1"></span><span class="quarter-tick" data-quarter-end="2"></span><span class="quarter-tick" data-quarter-end="3"></span></div>
+        <div class="year-quarters" aria-hidden="true"><span data-quarter="1">Q1</span><span data-quarter="2">Q2</span><span data-quarter="3">Q3</span><span data-quarter="4">Q4</span></div>
+      </section>
+      <div id="weather" class="weather">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 24h16a6 6 0 0 0 0-12h-1a8 8 0 0 0-15-2 7 7 0 0 0 0 14Z"/></svg>
+        <span class="weather-reading"><span id="temperature">—°</span><span id="weather-condition"></span></span>
+      </div>
+      <div class="time-block"><time id="clock">—</time></div>
+    </header>
+
+    <nav id="dock" class="dock" aria-label="HDMI inputs" data-count="2">
+      <button class="source input-card is-selected" type="button" data-device="apple" data-port="3" aria-label="Preview Apple TV, HDMI 3" data-nav="control-0">
+        <span class="device-mark source-art"><img class="apple-mark" src="assets/apple-tv-mark.png" alt=""></span><span class="source-name device-name">Apple TV</span>
+      </button>
+      <button class="source input-card" type="button" data-device="playstation" data-port="1" aria-label="Preview PlayStation, HDMI 1" data-nav="control-1">
+        <span class="device-mark source-art"><img class="ps-mark" src="assets/playstation-mark.svg" alt=""></span><span class="source-name device-name">PlayStation</span>
+      </button>
+      <button class="source input-card extra-input" type="button" data-device="hdmi2" data-port="2" aria-label="Preview HDMI 2" hidden data-nav="control-2">
+        <span class="device-mark source-art"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 10h30v12l-6 7H11l-6-7Zm6 5h18v5l-3 4H14l-3-4Z"/><path d="M15 30v6h10v-6"/></svg></span><span class="source-name device-name">HDMI 2</span>
+      </button>
+      <button class="source input-card extra-input" type="button" data-device="hdmi4" data-port="4" aria-label="Preview HDMI 4" hidden data-nav="control-3">
+        <span class="device-mark source-art"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 10h30v12l-6 7H11l-6-7Zm6 5h18v5l-3 4H14l-3-4Z"/><path d="M15 30v6h10v-6"/></svg></span><span class="source-name device-name">HDMI 4</span>
+      </button>
+    </nav>
+
+  <footer class="scene-footer">
+    <nav class="tv-shortcuts" aria-label="TV controls">
+      <button id="settings" class="quiet-button" type="button" aria-haspopup="dialog" aria-controls="settings-panel" data-nav="control-4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h7m4 0h5M4 17h3m4 0h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span>Preferences</span></button>
+      <button id="samsung-settings" class="quiet-button" type="button" data-nav="control-5"><img class="utility-icon" src="assets/settings.svg?v=0.7.2" alt=""><span>Settings</span></button>
+      <button id="samsung-home" class="quiet-button" type="button" data-nav="control-6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M6 9v12h4v-7h4v7h4V9"/></svg><span>Samsung Home</span></button>
+      <button id="edit-layout" class="quiet-button" type="button" aria-haspopup="dialog" aria-controls="layout-dialog" data-nav="control-7"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="7" height="14" rx="2"/><rect x="14" y="5" width="7" height="14" rx="2"/></svg><span>Edit layout</span></button>
+    </nav>
+  </footer>
+  </main>
+
+  <div id="settings-panel" class="panel-wrap" hidden>
+    <section class="panel settings-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <header class="panel-heading"><div><h1 id="settings-title">Home preferences</h1><p>A little more your own.</p></div><button id="close-preferences" class="round-button close-panel" type="button" aria-label="Close preferences" data-nav="control-8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header>
+      <div class="preference-list"><label class="toggle-label"><span><strong>Clock on the left</strong><small>Match the layout in your reference.</small></span><input id="clock-left" data-nav="clock-left" type="checkbox" role="switch"></label><label class="toggle-label"><span><strong>Show all HDMI inputs</strong><small>Keep HDMI 2 and HDMI 4 in the dock.</small></span><input id="all-inputs" data-nav="all-inputs" type="checkbox" role="switch"></label>
+      <label class="toggle-label"><span><strong>Turn off after 30 minutes</strong><small>When Home is idle. Watching HDMI pauses the timer.</small></span><input id="idle-off" data-nav="idle-off" type="checkbox" role="switch"></label></div>
+      <p id="idle-status" class="idle-status" role="status" aria-live="polite"></p>
+      <button id="retry-power" class="text-button" type="button" data-nav="retry-power" hidden>Enable TV power control</button>
+      <p class="preview-note">Home preferences are saved on this TV. Samsung Settings and Samsung Home remain available below.</p>
+      <p class="credit">Weather by Open-Meteo.com, CC BY 4.0.</p>
+    </section>
+  </div>
+
+  <div id="layout-dialog" class="panel-wrap" hidden>
+    <section class="panel layout-editor" role="dialog" aria-modal="true" aria-labelledby="layout-title" aria-describedby="layout-description">
+      <header class="panel-heading">
+        <div>
+          <h2 id="layout-title">Your inputs</h2>
+          <p id="layout-description">Choose the inputs you want to see. Hidden inputs stay available here.</p>
+        </div>
+        <button id="close-layout" class="round-button" type="button" aria-label="Close layout editor" data-nav="close-layout">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+        </button>
+      </header>
+      <form id="layout-form" novalidate>
+        <div class="editor-fields">
+          <div class="editor-row"><label class="visibility-field" for="show-0"><input id="show-0" type="checkbox" data-nav="show-0" aria-label="Show input 1"><span>Show</span></label><label for="name-0">Tile 1 name<input id="name-0" name="name-0" type="text" maxlength="32" autocomplete="off" data-nav="name-0"></label><label class="port-field" for="port-0">Opens<select id="port-0" name="port-0" data-nav="port-0"><option value="1">HDMI 1</option><option value="2">HDMI 2</option><option value="3">HDMI 3</option><option value="4">HDMI 4</option></select></label></div>
+          <div class="editor-row"><label class="visibility-field" for="show-1"><input id="show-1" type="checkbox" data-nav="show-1" aria-label="Show input 2"><span>Show</span></label><label for="name-1">Tile 2 name<input id="name-1" name="name-1" type="text" maxlength="32" autocomplete="off" data-nav="name-1"></label><label class="port-field" for="port-1">Opens<select id="port-1" name="port-1" data-nav="port-1"><option value="1">HDMI 1</option><option value="2">HDMI 2</option><option value="3">HDMI 3</option><option value="4">HDMI 4</option></select></label></div>
+          <div class="editor-row"><label class="visibility-field" for="show-2"><input id="show-2" type="checkbox" data-nav="show-2" aria-label="Show input 3"><span>Show</span></label><label for="name-2">Tile 3 name<input id="name-2" name="name-2" type="text" maxlength="32" autocomplete="off" data-nav="name-2"></label><label class="port-field" for="port-2">Opens<select id="port-2" name="port-2" data-nav="port-2"><option value="1">HDMI 1</option><option value="2">HDMI 2</option><option value="3">HDMI 3</option><option value="4">HDMI 4</option></select></label></div>
+          <div class="editor-row"><label class="visibility-field" for="show-3"><input id="show-3" type="checkbox" data-nav="show-3" aria-label="Show input 4"><span>Show</span></label><label for="name-3">Tile 4 name<input id="name-3" name="name-3" type="text" maxlength="32" autocomplete="off" data-nav="name-3"></label><label class="port-field" for="port-3">Opens<select id="port-3" name="port-3" data-nav="port-3"><option value="1">HDMI 1</option><option value="2">HDMI 2</option><option value="3">HDMI 3</option><option value="4">HDMI 4</option></select></label></div>
+        </div>
+        <p id="layout-error" class="layout-error" role="alert" hidden></p>
+        <footer class="editor-actions">
+          <button id="reset-layout" class="text-button" type="button" data-nav="reset-layout">Reset layout</button>
+          <div class="save-actions"><button id="cancel-layout" class="dialog-button" type="button" data-nav="cancel-layout">Cancel</button><button class="dialog-button primary" type="submit" data-nav="save-layout">Save layout</button></div>
+        </footer>
+      </form>
+      <p class="weather-credit">Weather data by Open-Meteo.com, CC BY 4.0. Temperatures rounded to whole degrees.</p>
+    </section>
+  </div>
+
+  <div id="notice-wrap" class="status" hidden><p id="notice" role="status" aria-live="polite" aria-atomic="true"></p><button id="retry-sources" class="text-button" type="button" data-nav="retry" hidden>Check inputs again</button></div>
+  <div id="idle-warning" class="status idle-warning" role="status" aria-live="polite" hidden>TV turns off in 30 seconds. Press any button to keep it on.</div>
+  </div>
+  <script src="tv-power.js?v=0.7.2"></script><script src="tv-bridge.js?v=0.7.2"></script><script src="home-idle.js?v=0.7.2"></script><script src="home-info.js?v=0.7.2"></script><script src="year-progress.js?v=0.7.2"></script><script src="assets/photos.js?v=0.7.2"></script><script src="scenic.js?v=0.7.2"></script><script src="app.js?v=0.7.2"></script>
+</body>
+</html>

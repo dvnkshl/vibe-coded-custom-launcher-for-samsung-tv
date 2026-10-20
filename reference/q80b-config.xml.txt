@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets"
+        id="https://local.invalid/q80b-home" version="0.7.2" viewmodes="maximized">
+  <tizen:application id="Q80BHome01.Home" package="Q80BHome01" required_version="6.0"/>
+  <content src="index.html"/>
+  <name>Home</name>
+  <description>A private HDMI launcher with Samsung Settings and Home access.</description>
+  <icon src="icon.png"/>
+  <tizen:profile name="tv-samsung"/>
+  <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+  <tizen:privilege name="http://tizen.org/privilege/internet"/>
+  <access origin="https://api.open-meteo.com" subdomains="false"/>
+  <tizen:setting screen-orientation="landscape" context-menu="disable"
+                 background-support="disable" encryption="disable"
+                 install-location="auto" hwkey-event="enable"/>
+  <tizen:metadata key="http://samsung.com/tv/metadata/use.network" value="true"/>
+  <tizen:content-security-policy>default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://api.open-meteo.com; object-src 'none'; base-uri 'none'; form-action 'none'</tizen:content-security-policy>
+</widget>

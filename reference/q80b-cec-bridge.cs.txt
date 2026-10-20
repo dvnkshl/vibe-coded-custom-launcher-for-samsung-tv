@@ -1,0 +1,91 @@
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text.Json;
+using Tizen.Applications;
+
+// A one-request, TV-local bridge. No listener, SDK connection, root or network.
+// It accepts only this launcher's requests for two observed devices and exits.
+internal sealed class CecBridge : CoreUIApplication
+{
+    const string Library = "/usr/lib/libhdmicec-api.so.0";
+    [DllImport(Library, EntryPoint="cec_get_device_name_by_logical_address")]
+    static extern int DeviceName(int index, out IntPtr name);
+    [DllImport(Library, EntryPoint="cec_get_device_port_num")]
+    static extern int DevicePort(int index, out int port);
+    [DllImport(Library, EntryPoint="cec_set_device_stream_path_by_hdmi_port")]
+    static extern int SetStreamPath(int port);
+    [DllImport("libc")] static extern uint getuid();
+    bool handled;
+
+    protected override void OnAppControlReceived(AppControlReceivedEventArgs e)
+    {
+        base.OnAppControlReceived(e);
+        if (handled) return;
+        handled = true;
+        var request = e.ReceivedAppControl;
+        string status = "refused";
+        int port = 0;
+        int? cecResult = null;
+        bool viewerAccepted = false;
+        string errorType = null;
+        try
+        {
+            if (request.CallerApplicationId != "Q80BHome01.Home") throw new InvalidOperationException("caller");
+            string action = request.ExtraData.Get<string>("action");
+            string expectedName;
+            if (action == "apple-tv-hdmi3") { port = 3; expectedName = "Apple TV"; }
+            else if (action == "ps5-hdmi1") { port = 1; expectedName = "PlayStation 5"; }
+            else throw new InvalidOperationException("action");
+            int matches = 0;
+            for (int index = 0; index < 15; index++)
+            {
+                IntPtr pointer;
+                int foundName = DeviceName(index, out pointer);
+                int observedPort;
+                int foundPort = DevicePort(index, out observedPort);
+                string name = pointer.ToInt64() > 65535 ? Marshal.PtrToStringAnsi(pointer) : null;
+                if (foundName == 0 && foundPort == 0 && observedPort == port &&
+                    String.Equals(name, expectedName, StringComparison.OrdinalIgnoreCase)) matches++;
+            }
+            if (matches != 1) throw new InvalidOperationException("device-mismatch");
+            cecResult = SetStreamPath(port);
+            {
+                var viewer = new AppControl();
+                viewer.ApplicationId = "org.tizen.tv-viewer";
+                viewer.Operation = "http://tizen.org/appcontrol/operation/default";
+                viewer.ExtraData.Add("change_source", (12 + port).ToString());
+                viewer.ExtraData.Add("sourceType", (12 + port).ToString());
+                viewer.ExtraData.Add("sourceName", expectedName);
+                viewer.ExtraData.Add("mbrIndex", port == 3 ? "0" : "-2");
+                AppControl.SendLaunchRequest(viewer);
+                viewerAccepted = true;
+            }
+            status = cecResult == 0 ? "cec-accepted" : "input-only";
+        }
+        catch (Exception error) { errorType = error.GetType().Name; }
+        try
+        {
+            File.WriteAllText(Path.Combine(DirectoryInfo.Data, "last-result.json"), JsonSerializer.Serialize(new {
+                uid = getuid(), caller = request.CallerApplicationId, port, cec_result = cecResult,
+                viewer_accepted = viewerAccepted, status, error_type = errorType,
+                root_used = false, hardware_wake_verified = false, recorded_utc = DateTime.UtcNow }));
+        }
+        catch { /* A failed receipt write must not suppress the reply. */ }
+        try
+        {
+            {
+                var reply = new AppControl();
+                reply.ExtraData.Add("status", status);
+                reply.ExtraData.Add("port", port.ToString());
+                request.ReplyToLaunchRequest(reply, viewerAccepted ? AppControlReplyResult.Succeeded : AppControlReplyResult.Failed);
+            }
+        }
+        finally { Exit(); }
+    }
+
+    static void Main(string[] args)
+    {
+        using (var app = new CecBridge()) app.Run(args);
+    }
+}

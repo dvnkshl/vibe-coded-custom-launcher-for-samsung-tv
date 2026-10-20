@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="6.0" package="org.codex.q80b.cec" version="0.1.0" install-location="internal-only">
+  <profile name="tv" />
+  <ui-application appid="org.codex.q80b.cec" exec="Q80BCec.dll" type="dotnet" multiple="false" taskmanage="false" nodisplay="true">
+    <label>Home input control</label>
+    <icon>icon.png</icon>
+  </ui-application>
+  <privileges><privilege>http://tizen.org/privilege/application.launch</privilege></privileges>
+</manifest>

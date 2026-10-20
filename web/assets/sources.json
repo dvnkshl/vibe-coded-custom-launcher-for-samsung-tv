@@ -1,0 +1,398 @@
+[
+  {
+    "key": "yosemite",
+    "title": "Yosemite",
+    "place": "Yosemite Valley",
+    "region": "California, United States",
+    "q": "Yosemite valley tunnel view",
+    "id": 20401561,
+    "position": "center 64%",
+    "src": "https://images.pexels.com/photos/20401561/pexels-photo-20401561.jpeg",
+    "url": "https://www.pexels.com/photo/yosemite-valley-california-united-states-20401561/",
+    "photographer": "Stephen Leonardi",
+    "photographer_url": "https://www.pexels.com/@stephen-leonardi-587681991",
+    "alt": "Captivating twilight scenery in Yosemite Valley with iconic rock formations and winter hues.",
+    "file": "assets/yosemite.jpg",
+    "bytes": 2433366,
+    "sha256": "91d6c0c018f1d791360320a888a1bda05a5389554e2be546c3e37c1dd36c21a5",
+    "mood": "Twilight",
+    "collection": "California",
+    "original_sha256": "c2277a038127d459816942ed94651d07cdb8facb91b5d6ea7425720da2ee558e",
+    "original_bytes": 4633227,
+    "original_dimensions": [
+      7845,
+      5233
+    ],
+    "crop": {
+      "left": 0,
+      "top": 525,
+      "width": 7845,
+      "height": 4413
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "san-francisco",
+    "title": "San Francisco",
+    "place": "Golden Gate Bridge",
+    "region": "San Francisco, California",
+    "q": "San Francisco Golden Gate Bridge",
+    "id": 16747126,
+    "position": "center 48%",
+    "src": "https://images.pexels.com/photos/16747126/pexels-photo-16747126.jpeg",
+    "url": "https://www.pexels.com/photo/view-of-the-golden-gate-bridge-over-the-san-francisco-bay-san-francisco-california-16747126/",
+    "photographer": "Taylen Lundequam",
+    "photographer_url": "https://www.pexels.com/@taylen-lundequam-393935458",
+    "alt": "Iconic Golden Gate Bridge partially shrouded in mist over San Francisco Bay.",
+    "file": "assets/san-francisco.jpg",
+    "bytes": 1933551,
+    "sha256": "d494d4281eb5857d77ff8ced64b462ccad01c4169f1ed6168ef7e88140f96881",
+    "mood": "Fog",
+    "collection": "California",
+    "original_sha256": "34976ebe3edece88fcdeef515625ebd3879bc3bfb8f405770c3d5dbe03680dc7",
+    "original_bytes": 2148769,
+    "original_dimensions": [
+      6000,
+      4000
+    ],
+    "crop": {
+      "left": 0,
+      "top": 300,
+      "width": 6000,
+      "height": 3375
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "vancouver",
+    "title": "Vancouver",
+    "place": "Vancouver",
+    "region": "British Columbia, Canada",
+    "q": "Vancouver skyline mountains",
+    "id": 11431965,
+    "position": "center 48%",
+    "src": "https://images.pexels.com/photos/11431965/pexels-photo-11431965.jpeg",
+    "url": "https://www.pexels.com/photo/city-at-waterfront-11431965/",
+    "photographer": "Brennan McDonald",
+    "photographer_url": "https://www.pexels.com/@brennanm",
+    "alt": "A dramatic view of Vancouver's skyline with fog-covered mountains in the background, evoking a moody ambiance.",
+    "file": "assets/vancouver.jpg",
+    "bytes": 1907785,
+    "sha256": "b9950d475615ab1a424ed759398da47309768e25fec3c3eed60e3c5408f25a7c",
+    "mood": "Overcast",
+    "collection": "Vancouver",
+    "original_sha256": "480acf8a2403f9ebe14a7a7a99832b3163fbdca2e7be402a01c4be7e481baf81",
+    "original_bytes": 1453442,
+    "original_dimensions": [
+      6016,
+      4016
+    ],
+    "crop": {
+      "left": 0,
+      "top": 303,
+      "width": 6016,
+      "height": 3384
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "new-zealand",
+    "title": "New Zealand",
+    "place": "Milford Sound",
+    "region": "Fiordland, New Zealand",
+    "q": "New Zealand Milford Sound",
+    "id": 27623549,
+    "position": "center 48%",
+    "src": "https://images.pexels.com/photos/27623549/pexels-photo-27623549.jpeg",
+    "url": "https://www.pexels.com/photo/a-body-of-water-surrounded-by-mountains-27623549/",
+    "photographer": "Donovan Kelly",
+    "photographer_url": "https://www.pexels.com/@donovan-kelly-110228397",
+    "alt": "Tranquil view of Milford Sound's fjords and mountains under clear skies, New Zealand.",
+    "file": "assets/new-zealand.jpg",
+    "bytes": 2218137,
+    "sha256": "9aee1b5ee293f75d46b05465d61bd22d9df08d8b081da322f03d9302d2c16c4a",
+    "mood": "Daylight",
+    "collection": "New Zealand",
+    "original_sha256": "7636c207f615d2198c6fd4c3ebe0e05855a14c3f957472f531b73d6553345a4e",
+    "original_bytes": 3695596,
+    "original_dimensions": [
+      6974,
+      4649
+    ],
+    "crop": {
+      "left": 0,
+      "top": 348,
+      "width": 6974,
+      "height": 3923
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "new-plymouth-sunset",
+    "title": "New Plymouth",
+    "place": "New Plymouth coast",
+    "region": "Taranaki, New Zealand",
+    "mood": "Sunset",
+    "collection": "New Zealand",
+    "q": "New Plymouth Taranaki New Zealand",
+    "id": 12641741,
+    "position": "center 50%",
+    "src": "https://images.pexels.com/photos/12641741/pexels-photo-12641741.jpeg",
+    "url": "https://www.pexels.com/photo/a-rocky-beach-in-taranaki-12641741/",
+    "photographer": "Ethan Brooke",
+    "photographer_url": "https://www.pexels.com/@ethan-brooke-1123775",
+    "alt": "Beautiful sunset over rocky beach in New Plymouth, highlighting vibrant skies and peaceful water reflections.",
+    "file": "assets/new-plymouth-sunset.jpg",
+    "bytes": 1182768,
+    "sha256": "5a1ebe34e5ba47cf219cb0fbaa85bd81ecbed06aaeb7991a1c5d0c6ec29fa72a",
+    "original_sha256": "7377c4d376dbb2f2f04d673b91b5877c51f73741cd453ce91f5ed86bee50022e",
+    "original_bytes": 483224,
+    "original_dimensions": [
+      3840,
+      2178
+    ],
+    "crop": {
+      "left": 0,
+      "top": 9,
+      "width": 3840,
+      "height": 2160
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "taranaki-sunrise",
+    "title": "Taranaki",
+    "place": "Mount Taranaki",
+    "region": "Taranaki, New Zealand",
+    "mood": "Sunrise",
+    "collection": "New Zealand",
+    "q": "New Plymouth Taranaki New Zealand",
+    "id": 16394365,
+    "position": "center 50%",
+    "src": "https://images.pexels.com/photos/16394365/pexels-photo-16394365.jpeg",
+    "url": "https://www.pexels.com/photo/mount-egmont-an-active-volcano-in-new-zealand-16394365/",
+    "photographer": "Ethan Brooke",
+    "photographer_url": "https://www.pexels.com/@ethan-brooke-1123775",
+    "alt": "Majestic view of snowcapped Mount Taranaki at sunrise in Taranaki, New Zealand.",
+    "file": "assets/taranaki-sunrise.jpg",
+    "bytes": 3100032,
+    "sha256": "023f048fdea42e1138d621f7eaed7f1c0db356a50d007b80ef57116985ea7e20",
+    "original_sha256": "b47946d0cb08f3f426f226aa9dd51313c034cb8a281eed56ab3513bc429491f2",
+    "original_bytes": 6964526,
+    "original_dimensions": [
+      7837,
+      5227
+    ],
+    "crop": {
+      "left": 0,
+      "top": 410,
+      "width": 7837,
+      "height": 4408
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "taranaki-coast",
+    "title": "Taranaki coast",
+    "place": "Three Sisters",
+    "region": "Tongapōrutu, New Zealand",
+    "mood": "Daylight",
+    "collection": "New Zealand",
+    "q": "New Plymouth Taranaki New Zealand",
+    "id": 37353229,
+    "position": "center 50%",
+    "src": "https://images.pexels.com/photos/37353229/pexels-photo-37353229.jpeg",
+    "url": "https://www.pexels.com/photo/dramatic-seascape-of-new-zealand-s-three-sisters-37353229/",
+    "photographer": "Gaurav Kumar",
+    "photographer_url": "https://www.pexels.com/@gaurav-kumar-1281378",
+    "alt": "Explore the majestic Three Sisters rock formations on New Zealand's Taranaki coast, framed by a vast ocean and sky.",
+    "file": "assets/taranaki-coast.jpg",
+    "bytes": 1784610,
+    "sha256": "0381ba3939595d54d1b3f1f331e4bd48d4dbc4b5d5a34f69f218da2b34650237",
+    "original_sha256": "494064630842895e9bc099217d14d3c4ce1d8b71f94d64fcebad1057d7ff3ee8",
+    "original_bytes": 2645070,
+    "original_dimensions": [
+      6953,
+      4635
+    ],
+    "crop": {
+      "left": 0,
+      "top": 362,
+      "width": 6953,
+      "height": 3911
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "wanaka-sunset",
+    "title": "Wānaka",
+    "place": "Lake Wānaka",
+    "region": "Otago, New Zealand",
+    "mood": "Sunset",
+    "collection": "New Zealand",
+    "q": "New Zealand lake mountains sunset",
+    "id": 5348754,
+    "position": "center 50%",
+    "src": "https://images.pexels.com/photos/5348754/pexels-photo-5348754.jpeg",
+    "url": "https://www.pexels.com/photo/green-tree-on-island-surrounded-by-water-5348754/",
+    "photographer": "Ken Cheung",
+    "photographer_url": "https://www.pexels.com/@ken-cheung-3355734",
+    "alt": "A serene view of the famous Wanaka Tree during sunset with mountains in the background, New Zealand.",
+    "file": "assets/wanaka-sunset.jpg",
+    "bytes": 1286154,
+    "sha256": "91fb7706020bd96981b6c553cf6e1cdcab6b3d03eaf7643891ee799ad0bb1a2b",
+    "original_sha256": "7a374bb259dd9ba57a0e9132cc889638163a7075b27d459f1ed2d6c00a1a1b4f",
+    "original_bytes": 834891,
+    "original_dimensions": [
+      5128,
+      3419
+    ],
+    "crop": {
+      "left": 0,
+      "top": 268,
+      "width": 5128,
+      "height": 2884
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "tekapo-dusk",
+    "title": "Tekapo",
+    "place": "Lake Tekapo",
+    "region": "Canterbury, New Zealand",
+    "mood": "Dusk",
+    "collection": "New Zealand",
+    "q": "New Zealand lake mountains sunset",
+    "id": 7629154,
+    "position": "center 50%",
+    "src": "https://images.pexels.com/photos/7629154/pexels-photo-7629154.jpeg",
+    "url": "https://www.pexels.com/photo/green-trees-near-the-lake-7629154/",
+    "photographer": "Ken Cheung",
+    "photographer_url": "https://www.pexels.com/@ken-cheung-3355734",
+    "alt": "Beautiful sunset reflection on Lake Tekapo with mountain backdrop and lush trees.",
+    "file": "assets/tekapo-dusk.jpg",
+    "bytes": 1715639,
+    "sha256": "8ad73924de30d5bbc1be2713f19b65b7188e26d54cb47c42e3939198df7b215b",
+    "original_sha256": "2fd9361a07f662dc2a1cc00876bfa14f248c825db8c7016096554211acf20506",
+    "original_bytes": 1237357,
+    "original_dimensions": [
+      4993,
+      3329
+    ],
+    "crop": {
+      "left": 0,
+      "top": 260,
+      "width": 4993,
+      "height": 2809
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "vancouver-night",
+    "title": "Vancouver",
+    "place": "Vancouver waterfront",
+    "region": "British Columbia, Canada",
+    "mood": "Night",
+    "collection": "Vancouver",
+    "q": "Vancouver skyline night",
+    "id": 18155772,
+    "position": "center 50%",
+    "src": "https://images.pexels.com/photos/18155772/pexels-photo-18155772.jpeg",
+    "url": "https://www.pexels.com/photo/illuminated-downtown-at-waterfront-18155772/",
+    "photographer": "Jeffry Surianto",
+    "photographer_url": "https://www.pexels.com/@andromeda99",
+    "alt": "Vibrant night view of Vancouver's illuminated skyline reflecting in the calm waterfront.",
+    "file": "assets/vancouver-night.jpg",
+    "bytes": 1488987,
+    "sha256": "eba308b78b8c4810cd0cd1287185921035a27070c3a435ee83ccf701b9a6df93",
+    "original_sha256": "1553d6d5e34d04b41585c26a97dbf36d3993fa02dcd5662b92c6e32bf8c04d8a",
+    "original_bytes": 1077498,
+    "original_dimensions": [
+      5184,
+      3456
+    ],
+    "crop": {
+      "left": 0,
+      "top": 270,
+      "width": 5184,
+      "height": 2916
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  },
+  {
+    "key": "vancouver-blue-hour",
+    "title": "Vancouver",
+    "place": "Vancouver skyline",
+    "region": "British Columbia, Canada",
+    "mood": "Blue hour",
+    "collection": "Vancouver",
+    "q": "Vancouver skyline night",
+    "id": 12953728,
+    "position": "center 50%",
+    "src": "https://images.pexels.com/photos/12953728/pexels-photo-12953728.jpeg",
+    "url": "https://www.pexels.com/photo/light-of-skyscraper-mirroring-in-water-12953728/",
+    "photographer": "Mingzhe Zhang",
+    "photographer_url": "https://www.pexels.com/@mingzhe-zhang-277775532",
+    "alt": "Stunning view of Vancouver's illuminated skyline reflecting on calm waters at dusk.",
+    "file": "assets/vancouver-blue-hour.jpg",
+    "bytes": 1741785,
+    "sha256": "9b22bcae5e27022104972ee495ddd058402e2d7eb06ac1e99585e21fe55e73ad",
+    "original_sha256": "f9c45d715770bb713b3122212818879cd2aff731d508f8df07a494c175c005a8",
+    "original_bytes": 944524,
+    "original_dimensions": [
+      4000,
+      3000
+    ],
+    "crop": {
+      "left": 0,
+      "top": 375,
+      "width": 4000,
+      "height": 2250
+    },
+    "dimensions": [
+      3840,
+      2160
+    ],
+    "optimization": "3840x2160 JPEG quality 90, cropped at approved focal position; no source upscaling"
+  }
+]

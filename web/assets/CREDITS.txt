@@ -1,0 +1,33 @@
+Local research launcher artwork
+
+Apple TV mark: Apple Inc., official Apple TV 4K page.
+https://www.apple.com/apple-tv-4k/
+https://www.apple.com/v/apple-tv-4k/ao/images/overview/rooms/app_apple_tv__fay3m79s4umq_large_2x.png
+Original PNG; CSS displays a white version on the graphite device card.
+
+PlayStation mark: Sony Interactive Entertainment, official PlayStation website.
+https://www.playstation.com/en-us/
+https://www.playstation.com/etc.clientlibs/global_pdc/clientlibs/auto-clientlibs/pdc.designkit/resources/ps-icons-map__dig__brand.svg
+Original monogram geometry extracted from the ps-icon_brand_playstation symbol, with white fill.
+
+Wallpaper: Parth Patel, Pexels photograph 40280178.
+https://www.pexels.com/photo/scenic-view-of-lake-and-mountains-in-new-zealand-40280178/
+https://www.pexels.com/@parth-patel-2161339175
+https://www.pexels.com/license/
+Original CDN-sized image; darkening/blur are rendered by CSS.
+
+HDMI glyph and launcher icon: original project artwork.
+Brand marks identify connected devices. This independent personal prototype is not an Apple or Sony product.
+
+Vancouver weather data: Open-Meteo.com
+https://open-meteo.com/
+Data licence: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+https://open-meteo.com/en/licence
+Changes: temperatures rounded to whole degrees; weather codes rendered as local icons and descriptions.
+Provider credit is available in Edit layout; no provider branding appears on the launcher header.
+
+Scenic exploration photos: see sources.json for each Pexels page, photographer and original image hash.
+Pexels license: https://www.pexels.com/license/
+
+Settings gear: Heroicons, Tailwind Labs. MIT license. Source: https://github.com/tailwindlabs/heroicons/blob/master/optimized/24/outline/cog-6-tooth.svg . License: HEROICONS-LICENSE.txt.
